@@ -1,11 +1,7 @@
 package huynhassignment1;
-
 /**
  *
  * @author Hue Anh Huynh
- */
-
-/*
 Write a Java program such that each time when your program runs, it automatically
 generates random numbers for your array, and then these random numbers are sorted
 and printed out on the screen. To do so, you need to import something, which helps
@@ -14,6 +10,9 @@ your array using dynamic storage allocation command, say new. Your program shoul
 behave similar to the one shown at
 http://storm.cis.fordham.edu/~ramos/java/assignment1/
 */
+
+import java.util.Random;
+
 public class HuynhAssignment1 {
 
     /**
@@ -22,17 +21,25 @@ public class HuynhAssignment1 {
     public static void main(String[] args) {
         //Scanner numInput = new Scanner(System.in); //used for user input
         int randArray[] = new int[7]; //7 element array composed of random ints
-        int temp; //placeholder for sorting later on
         
-        //GENERATING ARRAY OF 7 RANDOM INTEGERS
+        create(randArray);
+        sort(randArray);
+    }
+    
+    private static void create(int[] randArray) { //GENERATING ARRAY OF 7 RANDOM INTEGERS
+        Random rand = new Random();
         System.out.print("       Array: ");
         for(int i = 0; i < randArray.length; i++) {
-            randArray[i] = (int)(Math.random()*1000); //since the random function returns a double you gotta cast it to an integer
+            //randArray[i] = (int)(Math.random()*1000); //since the random function returns a double you gotta cast it to an integer
+            randArray[i] = rand.nextInt(1000);
             System.out.print(randArray[i] + "   ");
         }
         System.out.println();
+    }
+    
+    private static void sort(int[] randArray) { //SORTING THEN PRINTING ARRAY
+        int temp; //placeholder for sorting later on
         
-        //SORTING THE ARRAY
         System.out.print("Sorted Array: ");
         for(int i = 0; i < randArray.length; i++) {
             for(int j = i + 1; j < randArray.length; j++) {
